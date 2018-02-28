@@ -1,17 +1,23 @@
-const { GraphQLServer } = require('graphql-yoga')
-const { Prisma } = require('prisma-binding')
+const { GraphQLServer } = require('graphql-yoga');
+const { Prisma } = require('prisma-binding');
+const data = require('../database/data');
 
 const resolvers = {
   Query: {
-    feed(parent, args, ctx, info) {
-      return ctx.db.query.posts({ where: { isPublished: true } }, info)
-    },
-    drafts(parent, args, ctx, info) {
-      return ctx.db.query.posts({ where: { isPublished: false } }, info)
-    },
-    post(parent, { id }, ctx, info) {
-      return ctx.db.query.post({ where: { id } }, info)
-    },
+    name() { return data.name },
+    github() { return data.github },
+    twitter() { return data.twitter },
+    projects() { return data.projects },
+    sideProjects() { return data.sideProjects }
+    // feed(parent, args, ctx, info) {
+    //   return ctx.db.query.posts({ where: { isPublished: true } }, info)
+    // },
+    // drafts(parent, args, ctx, info) {
+    //   return ctx.db.query.posts({ where: { isPublished: false } }, info)
+    // },
+    // post(parent, { id }, ctx, info) {
+    //   return ctx.db.query.post({ where: { id } }, info)
+    // },
   },
   Mutation: {
     createDraft(parent, { title, text }, ctx, info) {

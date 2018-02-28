@@ -1,9 +1,12 @@
-# import Post from "./generated/prisma.graphql"
+# import Post, Project, SideProject from "./generated/prisma.graphql"
 
 type Query {
-  feed: [Post!]!
-  drafts: [Post!]!
-  post(id: ID!): Post
+  name: String
+  company: String
+  github: String
+  twitter: String
+  projects: [Project]
+  sideProjects: [SideProject]
 }
 
 type Mutation {
