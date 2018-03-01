@@ -7,6 +7,9 @@ const resolvers = {
     name() { return data.name },
     github() { return data.github },
     twitter() { return data.twitter },
+    employed() { return data.employed },
+    availableForCoffee() { return data.availableForCoffee },
+    availableForProjects() { return data.availableForProjects },
     projects() { return data.projects },
     sideProjects() { return data.sideProjects }
   }

@@ -5,6 +5,9 @@ type Query {
   company: String
   github: String
   twitter: String
+  employed: Boolean
+  availableForProjects: Boolean
+  availableForCoffee: Boolean
   projects: [Project]
   sideProjects: [SideProject]
 }

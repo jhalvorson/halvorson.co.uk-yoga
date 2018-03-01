@@ -12,5 +12,12 @@ module.exports = [
     agency: 'Signal',
     techStack: ['WORDPRESS'],
     role: 'Lead Developer',
+  },
+  {
+    client: 'Ambridge Partners',
+    description: 'I was tasked with building a WordPress multingual, multisite for Ambridge Partners. In total there are three sites, however, more can be spun up as necessary. The front end uses Twig.js with our pattern library at Signal, this way the integration is a smooth process. To handle the twig templates in the backedn we\'re using Timber. The project utilises WordPress\' multisite and the WPML plugin to handle translations and domain mapping.',
+    techStack: ['WORDPRESS'],
+    year: 2018,
+    role: 'Lead Developer'
   }
 ];
