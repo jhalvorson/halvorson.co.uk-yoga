@@ -5,13 +5,6 @@
 # Model Types
 #
 
-type Post implements Node {
-  id: ID!
-  isPublished: Boolean!
-  title: String!
-  text: String!
-}
-
 type Project implements Node {
   id: ID!
   role: String
@@ -28,16 +21,13 @@ type SideProject implements Node {
   description: String
   githubURL: String
   website: String
+  type: String
 }
 
 
 #
 # Other Types
 #
-
-type AggregatePost {
-  count: Int!
-}
 
 type AggregateProject {
   count: Int!
@@ -61,22 +51,16 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createPost(data: PostCreateInput!): Post!
   createProject(data: ProjectCreateInput!): Project!
   createSideProject(data: SideProjectCreateInput!): SideProject!
-  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateProject(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project
   updateSideProject(data: SideProjectUpdateInput!, where: SideProjectWhereUniqueInput!): SideProject
-  deletePost(where: PostWhereUniqueInput!): Post
   deleteProject(where: ProjectWhereUniqueInput!): Project
   deleteSideProject(where: SideProjectWhereUniqueInput!): SideProject
-  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   upsertProject(where: ProjectWhereUniqueInput!, create: ProjectCreateInput!, update: ProjectUpdateInput!): Project!
   upsertSideProject(where: SideProjectWhereUniqueInput!, create: SideProjectCreateInput!, update: SideProjectUpdateInput!): SideProject!
-  updateManyPosts(data: PostUpdateInput!, where: PostWhereInput!): BatchPayload!
   updateManyProjects(data: ProjectUpdateInput!, where: ProjectWhereInput!): BatchPayload!
   updateManySideProjects(data: SideProjectUpdateInput!, where: SideProjectWhereInput!): BatchPayload!
-  deleteManyPosts(where: PostWhereInput!): BatchPayload!
   deleteManyProjects(where: ProjectWhereInput!): BatchPayload!
   deleteManySideProjects(where: SideProjectWhereInput!): BatchPayload!
 }
@@ -117,283 +101,6 @@ type PageInfo {
   When paginating forwards, the cursor to continue.
   """
   endCursor: String
-}
-
-"""
-A connection to a list of items.
-"""
-type PostConnection {
-  """
-  Information to aid in pagination.
-  """
-  pageInfo: PageInfo!
-  """
-  A list of edges.
-  """
-  edges: [PostEdge]!
-  aggregate: AggregatePost!
-}
-
-input PostCreateInput {
-  isPublished: Boolean
-  title: String!
-  text: String!
-}
-
-"""
-An edge in a connection.
-"""
-type PostEdge {
-  """
-  The item at the end of the edge.
-  """
-  node: Post!
-  """
-  A cursor for use in pagination.
-  """
-  cursor: String!
-}
-
-enum PostOrderByInput {
-  id_ASC
-  id_DESC
-  isPublished_ASC
-  isPublished_DESC
-  title_ASC
-  title_DESC
-  text_ASC
-  text_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  createdAt_ASC
-  createdAt_DESC
-}
-
-type PostPreviousValues {
-  id: ID!
-  isPublished: Boolean!
-  title: String!
-  text: String!
-}
-
-type PostSubscriptionPayload {
-  mutation: MutationType!
-  node: Post
-  updatedFields: [String!]
-  previousValues: PostPreviousValues
-}
-
-input PostSubscriptionWhereInput {
-  """
-  Logical AND on all given filters.
-  """
-  AND: [PostSubscriptionWhereInput!]
-  """
-  Logical OR on all given filters.
-  """
-  OR: [PostSubscriptionWhereInput!]
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
-  mutation_in: [MutationType!]
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: PostWhereInput
-}
-
-input PostUpdateInput {
-  isPublished: Boolean
-  title: String
-  text: String
-}
-
-input PostWhereInput {
-  """
-  Logical AND on all given filters.
-  """
-  AND: [PostWhereInput!]
-  """
-  Logical OR on all given filters.
-  """
-  OR: [PostWhereInput!]
-  id: ID
-  """
-  All values that are not equal to given value.
-  """
-  id_not: ID
-  """
-  All values that are contained in given list.
-  """
-  id_in: [ID!]
-  """
-  All values that are not contained in given list.
-  """
-  id_not_in: [ID!]
-  """
-  All values less than the given value.
-  """
-  id_lt: ID
-  """
-  All values less than or equal the given value.
-  """
-  id_lte: ID
-  """
-  All values greater than the given value.
-  """
-  id_gt: ID
-  """
-  All values greater than or equal the given value.
-  """
-  id_gte: ID
-  """
-  All values containing the given string.
-  """
-  id_contains: ID
-  """
-  All values not containing the given string.
-  """
-  id_not_contains: ID
-  """
-  All values starting with the given string.
-  """
-  id_starts_with: ID
-  """
-  All values not starting with the given string.
-  """
-  id_not_starts_with: ID
-  """
-  All values ending with the given string.
-  """
-  id_ends_with: ID
-  """
-  All values not ending with the given string.
-  """
-  id_not_ends_with: ID
-  isPublished: Boolean
-  """
-  All values that are not equal to given value.
-  """
-  isPublished_not: Boolean
-  title: String
-  """
-  All values that are not equal to given value.
-  """
-  title_not: String
-  """
-  All values that are contained in given list.
-  """
-  title_in: [String!]
-  """
-  All values that are not contained in given list.
-  """
-  title_not_in: [String!]
-  """
-  All values less than the given value.
-  """
-  title_lt: String
-  """
-  All values less than or equal the given value.
-  """
-  title_lte: String
-  """
-  All values greater than the given value.
-  """
-  title_gt: String
-  """
-  All values greater than or equal the given value.
-  """
-  title_gte: String
-  """
-  All values containing the given string.
-  """
-  title_contains: String
-  """
-  All values not containing the given string.
-  """
-  title_not_contains: String
-  """
-  All values starting with the given string.
-  """
-  title_starts_with: String
-  """
-  All values not starting with the given string.
-  """
-  title_not_starts_with: String
-  """
-  All values ending with the given string.
-  """
-  title_ends_with: String
-  """
-  All values not ending with the given string.
-  """
-  title_not_ends_with: String
-  text: String
-  """
-  All values that are not equal to given value.
-  """
-  text_not: String
-  """
-  All values that are contained in given list.
-  """
-  text_in: [String!]
-  """
-  All values that are not contained in given list.
-  """
-  text_not_in: [String!]
-  """
-  All values less than the given value.
-  """
-  text_lt: String
-  """
-  All values less than or equal the given value.
-  """
-  text_lte: String
-  """
-  All values greater than the given value.
-  """
-  text_gt: String
-  """
-  All values greater than or equal the given value.
-  """
-  text_gte: String
-  """
-  All values containing the given string.
-  """
-  text_contains: String
-  """
-  All values not containing the given string.
-  """
-  text_not_contains: String
-  """
-  All values starting with the given string.
-  """
-  text_starts_with: String
-  """
-  All values not starting with the given string.
-  """
-  text_not_starts_with: String
-  """
-  All values ending with the given string.
-  """
-  text_ends_with: String
-  """
-  All values not ending with the given string.
-  """
-  text_not_ends_with: String
-}
-
-input PostWhereUniqueInput {
-  id: ID
 }
 
 """
@@ -849,13 +556,10 @@ input ProjectWhereUniqueInput {
 }
 
 type Query {
-  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   projects(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Project]!
   sideProjects(where: SideProjectWhereInput, orderBy: SideProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SideProject]!
-  post(where: PostWhereUniqueInput!): Post
   project(where: ProjectWhereUniqueInput!): Project
   sideProject(where: SideProjectWhereUniqueInput!): SideProject
-  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
   projectsConnection(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProjectConnection!
   sideProjectsConnection(where: SideProjectWhereInput, orderBy: SideProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SideProjectConnection!
   """
@@ -887,6 +591,7 @@ input SideProjectCreateInput {
   description: String
   githubURL: String
   website: String
+  type: String
 }
 
 """
@@ -914,6 +619,8 @@ enum SideProjectOrderByInput {
   githubURL_DESC
   website_ASC
   website_DESC
+  type_ASC
+  type_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -926,6 +633,7 @@ type SideProjectPreviousValues {
   description: String
   githubURL: String
   website: String
+  type: String
 }
 
 type SideProjectSubscriptionPayload {
@@ -968,6 +676,7 @@ input SideProjectUpdateInput {
   description: String
   githubURL: String
   website: String
+  type: String
 }
 
 input SideProjectWhereInput {
@@ -1244,6 +953,59 @@ input SideProjectWhereInput {
   All values not ending with the given string.
   """
   website_not_ends_with: String
+  type: String
+  """
+  All values that are not equal to given value.
+  """
+  type_not: String
+  """
+  All values that are contained in given list.
+  """
+  type_in: [String!]
+  """
+  All values that are not contained in given list.
+  """
+  type_not_in: [String!]
+  """
+  All values less than the given value.
+  """
+  type_lt: String
+  """
+  All values less than or equal the given value.
+  """
+  type_lte: String
+  """
+  All values greater than the given value.
+  """
+  type_gt: String
+  """
+  All values greater than or equal the given value.
+  """
+  type_gte: String
+  """
+  All values containing the given string.
+  """
+  type_contains: String
+  """
+  All values not containing the given string.
+  """
+  type_not_contains: String
+  """
+  All values starting with the given string.
+  """
+  type_starts_with: String
+  """
+  All values not starting with the given string.
+  """
+  type_not_starts_with: String
+  """
+  All values ending with the given string.
+  """
+  type_ends_with: String
+  """
+  All values not ending with the given string.
+  """
+  type_not_ends_with: String
 }
 
 input SideProjectWhereUniqueInput {
@@ -1251,7 +1013,6 @@ input SideProjectWhereUniqueInput {
 }
 
 type Subscription {
-  post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   project(where: ProjectSubscriptionWhereInput): ProjectSubscriptionPayload
   sideProject(where: SideProjectSubscriptionWhereInput): SideProjectSubscriptionPayload
 }
