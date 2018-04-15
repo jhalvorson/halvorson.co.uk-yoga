@@ -2,8 +2,9 @@ module.exports = [
   {
     client: 'Royal Edinburgh Military Tattoo',
     agency: 'Signal',
+    agencyUrl: 'https://cellosignal.com',
     techStack: ['REACT_NATIVE', 'WPAPI', 'FIREBASE'],
-    description: 'I had the opportunity to lead development on Signal\'s first React Native application for Tattoo - a huge event that takes place over August every year. We built the entire UI as well as a WordPress backend that synced to Firebase in realtime that then fed data to all applications in real-time.',
+    description: 'I had the opportunity to lead development on Signal\'s first React Native application for Tattoo - a huge event attracting hundreds of thousands of tourists, which takes place over August every year. I led development over all areas of the application including building the UI components, building the integration between WordPress and Firebase and setting up our CI via Fastlane. The backend (WordPress) synced in real-time to Firebase which in turn delivered content updates in real-time to users. The CMS was built to control that standard content in the application and the real-time event updates. In order to make the application flexible for Tattoo the entire application runs on a "page-builder" allowing them to drag and drop elements into place and instantly update the UI of the application. ',
     year: 2017,
     role: 'Lead Developer',
   },
@@ -15,9 +16,9 @@ module.exports = [
   },
   {
     client: 'Ambridge Partners',
-    description: 'I was tasked with building a WordPress multingual, multisite for Ambridge Partners. In total there are three sites, however, more can be spun up as necessary. The front end uses Twig.js with our pattern library at Signal, this way the integration is a smooth process. To handle the twig templates in the backedn we\'re using Timber. The project utilises WordPress\' multisite and the WPML plugin to handle translations and domain mapping.',
+    description: 'I was tasked with building a multilingual WordPress, multisite for Ambridge Partners. In total there are three sites, however, more can be spun up as necessary. The frontend uses Twig.js with our pattern library at Signal, this way the integration is a smooth process. To handle the twig templates in the backend we\'re using Timber. The project utilises WordPress\' multisite and the WPML plugin to handle translations and domain mapping.',
     techStack: ['WORDPRESS'],
     year: 2018,
     role: 'Lead Developer'
-  }
+  },
 ];
