@@ -10,6 +10,7 @@ type Project implements Node {
   role: String
   description: String
   agency: String
+  agencyURL: String
   client: String
   year: String
   techStack: [TECH!]
@@ -122,6 +123,7 @@ input ProjectCreateInput {
   role: String
   description: String
   agency: String
+  agencyURL: String
   client: String
   year: String
   techStack: ProjectCreatetechStackInput
@@ -154,6 +156,8 @@ enum ProjectOrderByInput {
   description_DESC
   agency_ASC
   agency_DESC
+  agencyURL_ASC
+  agencyURL_DESC
   client_ASC
   client_DESC
   year_ASC
@@ -169,6 +173,7 @@ type ProjectPreviousValues {
   role: String
   description: String
   agency: String
+  agencyURL: String
   client: String
   year: String
   techStack: [TECH!]
@@ -213,6 +218,7 @@ input ProjectUpdateInput {
   role: String
   description: String
   agency: String
+  agencyURL: String
   client: String
   year: String
   techStack: ProjectUpdatetechStackInput
@@ -443,6 +449,59 @@ input ProjectWhereInput {
   All values not ending with the given string.
   """
   agency_not_ends_with: String
+  agencyURL: String
+  """
+  All values that are not equal to given value.
+  """
+  agencyURL_not: String
+  """
+  All values that are contained in given list.
+  """
+  agencyURL_in: [String!]
+  """
+  All values that are not contained in given list.
+  """
+  agencyURL_not_in: [String!]
+  """
+  All values less than the given value.
+  """
+  agencyURL_lt: String
+  """
+  All values less than or equal the given value.
+  """
+  agencyURL_lte: String
+  """
+  All values greater than the given value.
+  """
+  agencyURL_gt: String
+  """
+  All values greater than or equal the given value.
+  """
+  agencyURL_gte: String
+  """
+  All values containing the given string.
+  """
+  agencyURL_contains: String
+  """
+  All values not containing the given string.
+  """
+  agencyURL_not_contains: String
+  """
+  All values starting with the given string.
+  """
+  agencyURL_starts_with: String
+  """
+  All values not starting with the given string.
+  """
+  agencyURL_not_starts_with: String
+  """
+  All values ending with the given string.
+  """
+  agencyURL_ends_with: String
+  """
+  All values not ending with the given string.
+  """
+  agencyURL_not_ends_with: String
   client: String
   """
   All values that are not equal to given value.

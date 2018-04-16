@@ -5,6 +5,7 @@ type Project {
   description: String
   # Who'd I make this cool thing with?
   agency: String
+  agencyURL: String
   # Who asked us to build it?
   client: String
   year: String
