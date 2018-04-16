@@ -3,11 +3,16 @@
 type Query {
   name: String
   company: String
+  # Open source work
   github: String
+  # Follow me for some boring React shitposting
   twitter: String
   employed: Boolean
   availableForProjects: Boolean
   availableForCoffee: Boolean
-  projects: [Project]
+  # Client work completed recently
+  work: [Project]
+  # What I'm working on outside of work
   sideProjects: [SideProject]
+  bio: String
 }
