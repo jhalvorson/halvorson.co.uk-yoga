@@ -3,6 +3,7 @@ type Project {
   id: ID! @unique
   role: String
   description: String
+  url: String
   # Who'd I make this cool thing with?
   agency: String
   agencyURL: String
